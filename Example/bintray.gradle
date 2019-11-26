@@ -1,0 +1,28 @@
+//apply plugin: 'com.novoda.bintray-release'
+//
+//allprojects {
+//    repositories {
+//        jcenter()
+//    }
+//    tasks.withType(Javadoc) {
+//        options{
+//            encoding "UTF-8"
+//            charSet 'UTF-8'
+//            links "http://docs.oracle.com/javase/7/docs/api"
+//        }
+//        options.addStringOption('Xdoclint:none', '-quiet')
+//    }
+//}
+//
+//publish {
+//    publishVersion = '0.0.2' // 版本
+//    website = rootProject.website
+//    desc = rootProject.desc
+//
+//    userOrg = rootProject.userOrg // 用户名或者组织
+//    repoName = rootProject.repoName // 仓库名
+//    groupId = rootProject.groupId  // 分groupId
+//    artifactId = rootProject.artifactId  // artifactId
+//
+//    licences = rootProject.licences
+//}

@@ -1,2 +1,0 @@
-include ':app', ':framework'
-rootProject.name='FrameworkMpl'

@@ -1,0 +1,27 @@
+apply plugin: 'com.novoda.bintray-release'
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
+publish {
+    publishVersion = '0.0.2' // 版本
+//    bintrayUser = rootProject.userOrg
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId  // 分groupId
+    artifactId = rootProject.artifactId  // artifactId
+    website = rootProject.website
+    desc = rootProject.desc
+    licences = [rootProject.licences]
+    repoName = rootProject.repoName
+}

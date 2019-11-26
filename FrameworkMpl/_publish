@@ -1,0 +1,1 @@
+./gradlew -Dhttp.proxyHost=157.245.205.81 -Dhttp.proxyPort=8080 bintrayUpload -PbintrayUser=cq-cherish -PbintrayKey=535861a596802aa3fb3dbdbfebec74cc074013a9 -PdryRun=false

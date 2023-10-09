@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import com.cherish.third_login.base.ILogin
 import com.cherish.third_login.base.ThirdUser
@@ -83,42 +84,24 @@ class FacebookLogin : ILogin {
 
     fun refreshToken() {
         val accessToken = AccessToken.getCurrentAccessToken()
-        val isLoggedIn = accessToken != null && !accessToken.isExpired
+        /*val isLoggedIn = accessToken != null && !accessToken.isExpired*/
         if (accessToken == null) {
             // 表示未登录
 
         } else if (accessToken.isExpired) {
-            // 表示登录失效了
+            // 表示登录失效了，现在刷新token
+            with(AccessToken) {
+                refreshCurrentAccessTokenAsync(object : AccessToken.AccessTokenRefreshCallback {
+                    override fun OnTokenRefreshFailed(exception: FacebookException?) {
 
+                    }
+
+                    override fun OnTokenRefreshed(accessToken: AccessToken?) {
+
+                    }
+                })
+            }
         }
-
-        /*AccessToken.refreshCurrentAccessTokenAsync(new AccessToken.AccessTokenRefreshCallback() {
-           @Override
-           public void OnTokenRefreshed(@Nullable AccessToken accessToken) {
-
-           }
-
-           @Override
-           public void OnTokenRefreshFailed(@Nullable FacebookException e) {
-
-           }
-       });*/
-        /*
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-
-        if (!isLoggedIn) {
-             // 未登录
-             LoginManager.getInstance().logInWithReadPermissions(
-                     this,
-                     callbackManager, Arrays.asList("public_profile", "email")
-             );
-         } else {
-             // 已自动登录
-             LoginManager.getInstance().logOut();// 注销登录
-             finish();
-         }*/
-
     }
 
 

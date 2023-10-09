@@ -81,6 +81,46 @@ class FacebookLogin : ILogin {
         )
     }
 
+    fun refreshToken() {
+        val accessToken = AccessToken.getCurrentAccessToken()
+        val isLoggedIn = accessToken != null && !accessToken.isExpired
+        if (accessToken == null) {
+            // 表示未登录
+
+        } else if (accessToken.isExpired) {
+            // 表示登录失效了
+
+        }
+
+        /*AccessToken.refreshCurrentAccessTokenAsync(new AccessToken.AccessTokenRefreshCallback() {
+           @Override
+           public void OnTokenRefreshed(@Nullable AccessToken accessToken) {
+
+           }
+
+           @Override
+           public void OnTokenRefreshFailed(@Nullable FacebookException e) {
+
+           }
+       });*/
+        /*
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+
+        if (!isLoggedIn) {
+             // 未登录
+             LoginManager.getInstance().logInWithReadPermissions(
+                     this,
+                     callbackManager, Arrays.asList("public_profile", "email")
+             );
+         } else {
+             // 已自动登录
+             LoginManager.getInstance().logOut();// 注销登录
+             finish();
+         }*/
+
+    }
+
 
     /**
      * 获取facebook 的用户信息
@@ -103,10 +143,12 @@ class FacebookLogin : ILogin {
                 "name":"龙浩",
                 "picture":{"data":{"height":50,"is_silhouette":false,"url":"https:\/\/platform-lookaside.fbsbx.com\/platform\/profilepic\/?asid=122108618942061915&height=50&width=50&ext=1699440079&hash=AeSzCLH9KcIFZAhVggo","width":50}}}
                  */
-               val user =  ThirdUser(parseJsonString(obj, "id"),
+                val user = ThirdUser(
+                    parseJsonString(obj, "id"),
                     parseJsonString(obj, "name"),
-                    parseJsonString(obj, "email"),"",
-                    parseJsonString(parseJsonObject(parseJsonObject(obj, "picture"), "data"), "url"))
+                    parseJsonString(obj, "email"), "",
+                    parseJsonString(parseJsonObject(parseJsonObject(obj, "picture"), "data"), "url")
+                )
 
             }
         }

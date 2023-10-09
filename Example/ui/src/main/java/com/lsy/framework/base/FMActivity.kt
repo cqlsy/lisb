@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.viewbinding.ViewBinding
 import com.lsy.framework.R
 import io.reactivex.ObservableTransformer
 import io.reactivex.disposables.CompositeDisposable
@@ -37,7 +38,7 @@ abstract class FMActivity<T : FMView> : AppCompatActivity(), SwipeBackActivityBa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val mViewBinding: ViewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
+        val mViewBinding: ViewBinding = DataBindingUtil.setContentView(this, getLayoutId())
         /* 设置滑动关闭 */
         if (canBack() != -1) {
             mHelper = SwipeBackActivityHelper(this)

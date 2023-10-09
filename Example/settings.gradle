@@ -1,2 +1,3 @@
 include ':app', ':net', ':ui', ':utils'
 rootProject.name='Example'
+include ':third-login'

@@ -7,9 +7,11 @@ import com.lsy.net.filedownupload.UpAndDownListener
 import com.lsy.net.log.LogType
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
 
 /**
  * 这个类不能直接使用，这是基类，
